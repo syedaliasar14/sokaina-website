@@ -1,29 +1,27 @@
-import type { Metadata } from "next";
+"use client"
+
+import { metadata } from './metadata';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Sokaina Asar",
-  description: "Sokaina Asar official website | Architecture | Neuroaesthetics",
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const page = usePathname();
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col items-center">
-          <Header/>
-          <div className="flex-grow">
-            {children}
-          </div>
+          {page != '/' && <Header/>}
+          {children}
           <Footer/>
         </div>
       </body>
