@@ -1,1 +1,1 @@
-This is a personal website for my sister, Sokaina. She's an architect specializing in neuroaesthetics.
+Offical website for my sister, Sokaina. She's an architect specializing in neuroaesthetics.
