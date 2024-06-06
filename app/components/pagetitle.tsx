@@ -1,7 +1,11 @@
-export default function PageTitle() {
+interface PageTitleProps {
+  title: string;
+}
+
+export default function PageTitle({title}: PageTitleProps) {
   return(
-    <div>
-      
+    <div className="py-8 uppercase text-3xl sm:text-5xl">
+      {title}
     </div>
   );
 }

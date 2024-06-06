@@ -15,7 +15,7 @@ export default function HomeHeader() {
     <div className="flex flex-col uppercase text-sm">
       {pages.map((page) => (
         <Link key={page.href} href={page.href}
-          className="p-2 hover:-translate-y-1 transition-transform px-1">
+          className="px-2 py-4 sm:py-2 hover:-translate-y-1 transition-transform">
           {page.name}
         </Link>
       ))}
