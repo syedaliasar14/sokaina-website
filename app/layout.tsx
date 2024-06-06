@@ -22,7 +22,6 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col items-center">
           {page != '/' && <Header/>}
           {children}
-          <Footer/>
         </div>
       </body>
     </html>

@@ -4,8 +4,8 @@
 
 :root {
   --foreground: #FFF,
-  --background-start: 214, 219, 220;
-  --background-end: 255, 255, 255;
+  --background-start: #FFF;
+  --background-end: #FFF;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -16,6 +16,26 @@
   }
 } */
 
+@font-face {
+  font-family: 'Garet';
+  src: url('/fonts/Garet-Book.woff2'),
+    url('/fonts/Garet-Book.woff'),
+    url('/fonts/Garet-Book.ttf'),
+    url('/fonts/Garet-Book.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Garet';
+  src: url('/fonts/Garet-Heavy.woff2'),
+    url('/fonts/Garet-Heavy.woff'),
+    url('/fonts/Garet-Heavy.ttf'),
+    url('/fonts/Garet-Heavy.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   background: linear-gradient(
@@ -24,6 +44,7 @@ body {
       var(--background-end)
     )
     var(--background-start);
+  font-family: 'Garet';
 }
 
 @layer utilities {
