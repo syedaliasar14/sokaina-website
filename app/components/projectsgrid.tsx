@@ -11,11 +11,11 @@ export default function ProjectsGrid ({folderName}: ProjectsGridProps) {
   const imageFileNames = fs.readdirSync(imagesDirectory);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 pb-2">
       {imageFileNames.map((fileName, index) => (
-        <div key={index} className="relative overflow-hidden flex justify-center align-items w-[300px] h-[300px] mb-10">
+        <div key={index} className="relative overflow-hidden flex justify-center align-items w-[300px] h-[300px] mb-10 opacity-100 hover:opacity-75 transition-all duration-500 mx-auto">
           <Image
-            className="object-cover"
+            className="object-cover hover:scale-105 transition-all duration-500"
             src={`/${folderName}/${fileName}`}
             alt={`Image ${index + 1}`}
             width={300}

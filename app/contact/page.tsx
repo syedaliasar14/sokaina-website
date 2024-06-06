@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import axios from "axios";
+import PageTitle from "../components/pagetitle";
+import Image from "next/image";
 
 export default function Contact() {
   const [email, setEmail] = useState('');
@@ -43,17 +45,23 @@ export default function Contact() {
   };
 
   return (
-    <main className="flex flex-col flex-grow sm:w-[500px] mx-auto mt-8">
-      <h1 className="text-2xl mb-6 uppercase tracking-widest text-center">Contact Me</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 w-full">
+    <main className="relative flex flex-col flex-grow items-center justify-center py-8 px-6 sm:px-8 sm:py-4 w-full h-full text-white">
+      <Image
+        className="absolute inset-0 object-cover"
+        src={"/home.jpg"}
+        alt="home"
+        fill
+      />
+      <PageTitle title="Contact" />
+      <form onSubmit={handleSubmit} className="relative space-y-4 w-full sm:w-[500px] mx-auto mt-8">
         <div className="flex flex-col">
-          <label htmlFor="email" className="mb-2 uppercase">Email:</label>
+          <label htmlFor="email" className="mb-2 uppercase">Your Email:</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
+            className="p-2 border border-gray-300"
           />
         </div>
         <div className="flex flex-col">
@@ -62,12 +70,12 @@ export default function Contact() {
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-2 border border-gray-300 rounded h-32"
+            className="p-2 border border-gray-300 h-32"
           ></textarea>
         </div>
         {error && <p className="text-red-500">{error}</p>}
         {success && <p className="text-green-500">{success}</p>}
-        <button type="submit" className="w-full bg-black text-white p-2 rounded uppercase">Send</button>
+        <button type="submit" className="w-full bg-white text-black p-2 uppercase">Send</button>
       </form>
     </main>
   );
