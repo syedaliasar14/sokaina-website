@@ -10,8 +10,8 @@ export default function Contact() {
     <main className="relative flex flex-col flex-grow items-center w-full h-full text-white">
       <Image
         className="absolute object-cover"
-        src={"/home.jpg"}
-        alt="home"
+        src={"/contact.jpg"}
+        alt="contact"
         fill
       />
       <div className="relative w-full">
