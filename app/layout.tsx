@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col items-center">
-          {page != '/' && <Header/>}
+          {(page != '/' && page != '/contact') && <Header/>}
           {children}
         </div>
       </body>

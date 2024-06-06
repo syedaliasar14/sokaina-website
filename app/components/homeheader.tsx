@@ -1,14 +1,5 @@
 import Link from "next/link";
-
-const pages = [
-  { name: "Home", href: "/" },
-  { name: "Fine Art", href: "/fineart" },
-  { name: "Architecture", href: "/architecture" },
-  /* { name: "Neuroscience", href: "/neuroscience" }, */
-  /* { name: "Neuroaesthetics Blog", href: "/blog" }, */
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" }
-];
+import { pages } from "./pages"
 
 export default function HomeHeader() {
   return (
