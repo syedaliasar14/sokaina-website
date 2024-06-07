@@ -4,10 +4,14 @@ import { metadata } from './metadata';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
-import Footer from "./components/footer";
 import { usePathname } from "next/navigation";
+import localFont from 'next/font/local'
 
 const inter = Inter({ subsets: ["latin"] });
+const myFont = localFont({
+  src: './Garet-Book.woff2',
+  display: 'swap',
+})
 
 export default function RootLayout({
   children,
@@ -18,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={myFont.className}>
         <div className="min-h-screen flex flex-col items-center">
           {(page != '/' && page != '/contact') && <Header/>}
           {children}
