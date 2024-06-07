@@ -51,7 +51,7 @@ export default function ContactForm() {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="p-2 border border-gray-300"
+          className="p-2 border border-gray-300 text-black"
         />
       </div>
       <div className="flex flex-col">
@@ -60,11 +60,11 @@ export default function ContactForm() {
           id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="p-2 border border-gray-300 h-32"
+          className="p-2 border border-gray-300 h-32 text-black"
         ></textarea>
       </div>
-      {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">{success}</p>}
+      {error && <p className="text-white-500 font-bold">{error}</p>}
+      {success && <p className="text-white">{success}</p>}
       <button type="submit" className="w-full bg-white text-black p-2 uppercase rounded-b">Send</button>
     </form>
   );
