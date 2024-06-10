@@ -5,21 +5,24 @@ const senderEmail = 'sasar@pratt.edu';
 const recipientEmail = 'sasar@pratt.edu';
 
 export const handler = async (event) => {
-  const { email, message } = JSON.parse(event.body);
+  const { name, email, message } = JSON.parse(event.body);
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
 
-  if (!email || !message) {
+  // Validate required fields
+  if (!name || !email || !message) {
     return {
       statusCode: 400,
       headers: headers,
-      body: JSON.stringify({ error: 'Both fields are required.' }),
+      body: JSON.stringify({ error: 'Missing required fields.' }),
     };
   }
 
-  if (!/\S+@\S+\.\S+/.test(email)) {
+  // Validate email format
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(email)) {
     return {
       statusCode: 400,
       headers: headers,
@@ -27,6 +30,7 @@ export const handler = async (event) => {
     };
   }
 
+  // Define email parameters
   const params = {
     Source: senderEmail,
     Destination: {
@@ -39,17 +43,18 @@ export const handler = async (event) => {
       },
       Body: {
         Html: {
-          Data: `<p><strong>Message from:</strong> ${email}</p><p>${message}</p>`,
+          Data: `<p><strong>Message from:</strong> ${name} <${email}></p><p>${message}</p>`,
           Charset: 'UTF-8',
         },
         Text: {
-          Data: `Message from: ${email}\n\n${message}`,
+          Data: `Message from: ${name} <${email}>\n\n${message}`,
           Charset: 'UTF-8',
         },
       },
     },
   };
 
+  // Send the email using SES
   try {
     await ses.sendEmail(params).promise();
     return {
