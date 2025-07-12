@@ -13,7 +13,7 @@ export default function Portfolio() {
           {projects.map((project) => (
             <div key={project.id} className="flex flex-col items-start">
               <Link href={`/portfolio/${project.id}`} className="relative flex flex-col items-start text-center">
-                <img src="/home-bg.jpg" alt={project.title} className="w-full aspect-square object-cover hover:scale-105 transition-all duration-300" />
+                <img src="/home-bg.jpg" alt={project.title} className="w-full aspect-square object-cover hover:scale-105 transition-all duration-300 brightness-65 saturate-25 contrast-150 sepia-50" />
                 <div className="absolute inset-0 p-2 bg-black/50 flex flex-col justify-center items-center text-white opacity-0 hover:opacity-100 transition-opacity duration-300 uppercase">
                   <h2 className="text-xl">{project.id}</h2>
                   <h3 className="text-2xl md:text-4xl font-bold mt-8 md:mt-12">{project.title}</h3>
