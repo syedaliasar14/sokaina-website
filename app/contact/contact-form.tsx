@@ -34,7 +34,8 @@ export default function ContactForm() {
         throw new Error('Failed to send message.');
       }
     } catch (error) {
-      setError('Failed to send message: ' + (error as Error).message);
+      setError('Failed to send message.');
+      console.log(error);
     } finally {
       setIsSending(false);
     }
