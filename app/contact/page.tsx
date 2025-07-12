@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <div className="relative flex flex-col sm:flex-row justify-center max-w-7xl p-8 w-full flex-grow">
+      <div className="relative flex flex-col md:flex-row justify-center max-w-7xl p-8 w-full flex-grow">
         <div className="w-full">
           <h1 className="text-3xl md:text-4xl tracking-widest mb-8">CONTACT</h1>
           <ContactForm />

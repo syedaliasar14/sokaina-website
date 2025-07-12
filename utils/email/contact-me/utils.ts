@@ -4,7 +4,7 @@ import { sendEmail } from "../sendEmail";
 
 export async function sendContactMeEmail(email: string, message: string) {
   const from = `sokainaasar.com <contact@sokainaasar.com>`;
-  const to = "sa.asar14@gmail.com" //"sasar@pratt.edu"
+  const to = "sasar@pratt.edu"
   const subject = "Message from Website";
   const templatePath = path.join(process.cwd(), "utils/email/contact-me/ContactMeTemplate.html");
   let html = fs.readFileSync(templatePath, "utf-8");
