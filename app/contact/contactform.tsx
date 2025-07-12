@@ -4,80 +4,67 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function ContactForm() {
-  const [email, setEmail] = useState('');
+  const [userEmail, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) {
-      setError('Missing required fields.');
+    setSuccess('');
+    if (!userEmail || !message) {
+      setError('Both fields are required.');
       return;
     }
-    if (!/\S+@\S+\.\S+/.test(email)) {
+    if (!/\S+@\S+\.\S+/.test(userEmail)) {
       setError('Email is invalid.');
       return;
     }
 
-    setError('');
     try {
-      const response = await axios.post('https://xhqqxur59f.execute-api.us-east-1.amazonaws.com/contactForm', 
-        { name, email, message }, 
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      if (response.data.success) {
+      setError('');
+      setIsSending(true);
+      const response = await axios.post('api/contact', { userEmail, message });
+      if (response.status === 200) {
         setSuccess('Your message has been sent!');
-        setName('');
         setEmail('');
         setMessage('');
       } else {
-        setError('Failed to send message.');
+        throw new Error('Failed to send message.');
       }
     } catch (error) {
-      setError('Failed to send message.');
+      setError('Failed to send message: ' + (error as Error).message);
+    } finally {
+      setIsSending(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative space-y-4 w-full sm:w-[500px] mx-auto">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
       <div className="flex flex-col">
-        <label htmlFor="name" className="mb-2 uppercase">Your Name:</label>
+        <label htmlFor="email" className="mb-2 uppercase">Email</label>
         <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="p-2 border border-gray-300 text-gray-800 shadow-xl focus:outline-none"
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="email" className="mb-2 uppercase">Your Email:</label>
-        <input
-          type="text"
+          className="py-2 px-3 border border-gray-300 rounded text-gray-700"
           id="email"
-          value={email}
+          value={userEmail}
           onChange={(e) => setEmail(e.target.value)}
-          className="p-2 border border-gray-300 text-gray-800 shadow-xl focus:outline-none"
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="message" className="mb-2 uppercase">Message:</label>
+        <label htmlFor="message" className="mb-2 uppercase">Message</label>
         <textarea
+          className="py-2 px-3 border border-gray-300 rounded h-32 text-gray-700"
           id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="p-2 border border-gray-300 h-32 text-gray-800 shadow-xl focus:outline-none"
         ></textarea>
       </div>
-      {error && <p className="text-white-500 font-bold">{error}</p>}
-      {success && <p className="text-white">{success}</p>}
-      <button type="submit" className="w-full bg-white hover:bg-gray-200 text-gray-800 p-2 uppercase rounded-lg shadow-xl focus:outline-none">Send</button>
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {success && <p className="text-sm">{success}</p>}
+      <button type="submit" className="w-full p-2 text-white cursor-pointer rounded bg-black hover:bg-gray-700 transition-colors duration-300">
+        {isSending ? 'Sending...' : 'Send'}
+      </button>
     </form>
   );
 }

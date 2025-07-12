@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message from Website</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .content {
+      color: #271f30;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      color: #999;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <p style="font-weight: bold;">You received a message from {{email}}:</p>
+      <br />
+      <p>
+        {{message}}
+      </p>
+    </div>
+    <div class="footer">
+      <p>Reply to this email to respond.</p>
+      <p>&copy;
+        <script>document.write(new Date().getFullYear());</script> sokainaasar.com, All rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
