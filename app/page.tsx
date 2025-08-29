@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <main className="relative flex flex-col items-center justify-center flex-grow text-white w-full px-8">
       <Image
-        className="object-cover brightness-65 saturate-25 contrast-150 sepia-50"
+        className="object-cover"
         src={"/home-bg.jpg"}
         alt="home"
         fill
       />
       <div className="relative flex flex-col items-center w-full text-center">
-        <div className="border border-white text-3xl md:text-5xl font-medium tracking-widest w-full md:w-[75vw] px-8 md:px-16 py-8 md:py-12">
+        <div className="text-3xl md:text-5xl font-medium tracking-widest w-full md:w-[75vw] px-8 md:px-16 py-8 md:py-12">
           SOKAINA ASAR
         </div>
         <nav className="pt-12 flex flex-col md:flex-row gap-4 md:gap-20 max-w-7xl tracking-widest font-semibold text-sm md:text-md">
